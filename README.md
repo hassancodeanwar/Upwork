@@ -17,7 +17,7 @@ GitHub Repository: [Upwork](https://github.com/hassancodeanwar/Upwork)
 This script is designed to scrape book details from the New York Times Bestsellers page for a specified range of dates. It collects detailed information about each bestseller, including its title, author, publisher, description, weeks on the list, and cover image URL. The scraped data can be saved in CSV, JSON, and Excel formats.
 
 ---
-
+![image](https://github.com/hassancodeanwar/Upwork/blob/main/img/NYT.png?raw=true)
 ### **File Structure**  
 
 #### **Requirements**  
