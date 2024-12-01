@@ -116,7 +116,7 @@ The script:
 #### **Sample Data Output**  
 | Title     | Author         | Publisher | Description                                     | New This Week | Weeks on List | ISBN       | Image URL                                   | Scrape Date |
 |-----------|----------------|-----------|------------------------------------------------|---------------|---------------|------------|---------------------------------------------|-------------|
-| BECOMING  | Michelle Obama | Crown     | The former first lady describes her journey... | True          | 6             | 1524763136 | https://storage.googleapis.com/.../978...jpg | 2019-01-01  |
+| BECOMING  | Michelle Obama | Crown     | The former first lady describes her journey... | True          | 6             | 1524763136 | [https://storage.googleapis.com/.../978...jpg](https://storage.googleapis.com/du-prd/books/images/9781524763138.jpg) | 2019-01-01  |
 
 ---
 
