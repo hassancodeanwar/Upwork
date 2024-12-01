@@ -5,6 +5,7 @@ from datetime import datetime, timedelta
 import time
 import json
 import re
+import openpyxl
 
 class NYTBestsellersScraper:
     def __init__(self):
@@ -93,6 +94,14 @@ class NYTBestsellersScraper:
             new_this_week_elem = element.find('p', class_='css-1o26r9v')
             new_this_week = new_this_week_elem is not None
             
+            # Extract weeks on list
+            weeks_on_list = None
+            if new_this_week_elem:
+                weeks_text = new_this_week_elem.text.strip()
+                match = re.search(r"(\d+) weeks on the list", weeks_text)
+                if match:
+                    weeks_on_list = int(match.group(1))
+            
             # Extract ISBN - use more robust method
             isbn_elems = element.find_all('meta', itemprop='isbn')
             isbn = isbn_elems[0].get('content', None) if isbn_elems else None
@@ -107,12 +116,14 @@ class NYTBestsellersScraper:
                 "publisher": publisher,
                 "description": description,
                 "new_this_week": new_this_week,
+                "weeks_on_list": weeks_on_list,
                 "isbn": isbn,
                 "image_url": image_url
             }
         except Exception as e:
             print(f"Error extracting book details: {e}")
             return {}
+
 
     def scrape_bestsellers_range(self, start_year=2019, end_year=2024):
         """
@@ -159,11 +170,11 @@ class NYTBestsellersScraper:
         # Save to CSV
         dataframe.to_csv(f'{base_filename}.csv', index=False)
         
-        # Save to JSON
-        dataframe.to_json(f'{base_filename}.json', orient='records', indent=2)
+        # # Save to JSON
+        # dataframe.to_json(f'{base_filename}.json', orient='records', indent=2)
         
-        # Save to Excel
-        dataframe.to_excel(f'{base_filename}.xlsx', index=False)
+        # # Save to Excel
+        # dataframe.to_excel(f'{base_filename}.xlsx', index=False)
 
 def main():
     scraper = NYTBestsellersScraper()
@@ -178,9 +189,9 @@ def main():
         print("Scraping completed successfully!")
         print(f"Total books scraped: {len(bestsellers_df)}")
         
-        # Pretty print first few books
-        print("\nSample Books:")
-        print(json.dumps(bestsellers_df.head().to_dict(orient='records'), indent=2))
+        # # Pretty print first few books
+        # print("\nSample Books:")
+        # print(json.dumps(bestsellers_df.head().to_dict(orient='records'), indent=2))
     
     except Exception as e:
         print(f"Scraping failed: {e}")
