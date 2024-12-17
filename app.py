@@ -125,15 +125,15 @@ class NYTBestsellersScraper:
             return {}
 
 
-    def scrape_bestsellers_range(self, start_year=2019, end_year=2024):
+    def scrape_bestsellers_range(self, start_year=2011, end_year=2024):
         """
         Scrape bestsellers across multiple years
         """
         all_bestsellers = []
         
         # Generate dates for scraping
-        current_date = datetime(start_year, 1, 1)
-        end_date = datetime(end_year, 12, 8)
+        current_date = datetime(start_year, 2, 20)
+        end_date = datetime(end_year, 12, 17)
         
         while current_date <= end_date:
             try:
@@ -170,8 +170,8 @@ class NYTBestsellersScraper:
         # Save to CSV
         dataframe.to_csv(f'{base_filename}.csv', index=False)
         
-        # # Save to JSON
-        # dataframe.to_json(f'{base_filename}.json', orient='records', indent=2)
+        # Save to JSON
+        dataframe.to_json(f'{base_filename}.json', orient='records', indent=2)
         
         # # Save to Excel
         # dataframe.to_excel(f'{base_filename}.xlsx', index=False)
