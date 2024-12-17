@@ -1,9 +1,9 @@
-# Technical Documentation for NYT Bestsellers Scraper
+# Technical Documentation for NYT Bestsellers Books Scraper
 
 ---
 
 ## Title  
-**NYT Bestsellers Scraper**
+**NYT Bestsellers Books Scraper**
 
 ## Author  
 **Hassan Anwar**
